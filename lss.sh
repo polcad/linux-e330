@@ -10,4 +10,7 @@
 #       $HOME/vim/
 
 
-#
+wget https://github.com/iseijin/LSS/blob/master/configFiles/.bashrc
+wget https://github.com/iseijin/LSS/blob/master/configFiles/.bash_alliases
+wget https://github.com/iseijin/LSS/blob/master/configFiles/.vimrc
+wget https://github.com/iseijin/LSS/blob/master/configFiles/.vim
