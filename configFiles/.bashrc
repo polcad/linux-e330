@@ -134,19 +134,15 @@ On_IPurple='\[\e[10;95m\]'  # Purple
 On_ICyan='\[\e[0;106m\]'    # Cyan
 On_IWhite='\[\e[0;107m\]'   # White
 
-
-
-
-#####################################################
-# Should export this prompt to root                 #
-if [ $UID = 0 ]; then                               #
-                                                    #
-    export PS1="$Red\u@\h \w \$$ENDCOLOUR "         #
-                                                    #   
-fi                                                  #
-#                                                   #
-#                                                   #
-#####################################################
+##############################
+# Export this prompt to root #
+##############################
+if [ $UID = 0 ]; then
+    export PS1="$Red\u@\h \w \$$ENDCOLOUR "
+fi
+##############################
+# Export this prompt to user #
+##############################
 if [ "$color_prompt" = yes ]; then
 #export PS1="$Green\u@$Blue\h:$STARTWHITE \w$$Color_Off"
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
@@ -204,4 +200,4 @@ fi
 #
 # Set path
 
-export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:$HOME/bin
