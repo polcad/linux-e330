@@ -196,8 +196,9 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
-#
-#
-# Set path
 
+# Mergre settings for XTerm
+xrdb -merge .Xresources 
+
+# Set path
 export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:$HOME/bin
