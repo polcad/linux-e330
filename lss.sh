@@ -22,11 +22,10 @@ if [ -d "$HOME/bin/configFiles" ]; then
   cd $HOME/bin/configFiles
 else
   mkdir $HOME/bin/configFiles
-  cd $HOME/bin/configFiles
 fi
 
 # Use Git instead of wget
-git clone git@github.com:whatever
+git clone git@github.com:iseijin/LSS.git $HOME/bin/configFiles
 
 # Set it up so the following files are stored in an "update" folder and compared to files in "current" if the Update
 # files are different, move the current files to "previous" and "update" to "current"
