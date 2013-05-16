@@ -13,13 +13,12 @@
 #
 # Scripts will be stored in $HOME/bin - create the directory if it doesn't exist
 if [ -d "$HOME/bin" ]; then
-   echo $HOME/bin already exists.
+  echo $HOME/bin already exists.
 else
   mkdir $HOME/bin
 fi
 
 # Use Git
-#git clone git@github.com:iseijin/LSS.git $HOME/bin/LSS
 if [ -d "$HOME/bin/LSS" ]; then
   echo The LSS git already exists, skipping this part.
 else

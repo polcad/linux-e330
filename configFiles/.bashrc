@@ -198,7 +198,9 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 # Mergre settings for XTerm
-xrdb -merge .Xresources 
+if [ -n ${DISPLAY} ]; then
+  xrdb -merge .Xresources
+fi  
 
 # Set path
 export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:$HOME/bin:$HOME/bin/LSS
