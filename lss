@@ -40,19 +40,19 @@ else
 fi
 
 if [ -L ~/.vimrc ]; then
-  echo .bashrc already exists...
+  echo .vimrc already exists...
 else
   ln -s ~/bin/LSS/configFiles/.vimrc ~/.vimrc
 fi
 
 if [ -L ~/.Xresources ]; then
-  echo .bashrc already exists...
+  echo .Xresources already exists...
 else
   ln -s ~/bin/LSS/configFiles/.Xresources ~/.Xresources
 fi
 
-if [ -d "~/.vim" ]; then
-  echo .bashrc already exists...
-else
-  ln -s ~/bin/LSS/configFiles/.vim ~/.vim
-fi
+#if [ -d "~/.vim" ]; then
+#  echo .vim already exists...
+#else
+#  ln -s ~/bin/LSS/configFiles/.vim ~/.vim
+#fi
