@@ -12,27 +12,46 @@
 #
 # Scripts will be stored in $HOME/bin - create the directory if it doesn't exist
 if [ -d "$HOME/bin" ]; then
-  cd $HOME/bin
+   echo $HOME/bin already exists.
 else
   mkdir $HOME/bin
 fi
 
-# Files from this script will be stored in $HOME/bin/configFiles - create it if it doesn't exist
-if [ -d "$HOME/bin/configFiles" ]; then
-  cd $HOME/bin/configFiles
+# Use Git
+#git clone git@github.com:iseijin/LSS.git $HOME/bin/LSS
+if [ -d "$HOME/bin/LSS" ]; then
+  echo The LSS git already exists, skipping this part.
 else
-  mkdir $HOME/bin/configFiles
+  git clone git@github.com:iseijin/LSS.git $HOME/bin/LSS
 fi
 
-# Use Git instead of wget
-git clone git@github.com:iseijin/LSS.git $HOME/bin/configFiles
+# Create sym links to files in LSS/configFiles
+if [ -L ~/.bashrc ]; then
+  echo .bashrc already exists...
+else
+  ln -s ~/bin/LSS/configFiles/.bashrc ~/.bashrc
+fi
 
-# Set it up so the following files are stored in an "update" folder and compared to files in "current" if the Update
-# files are different, move the current files to "previous" and "update" to "current"
-#wget https://github.com/iseijin/LSS/blob/master/configFiles/.bashrc
-#wget https://github.com/iseijin/LSS/blob/master/configFiles/.bash_alliases
-#wget https://github.com/iseijin/LSS/blob/master/configFiles/.vimrc
-#wget https://github.com/iseijin/LSS/blob/master/configFiles/.Xresources
-#wget -r --no-parent --reject "index.html*" https://github.com/iseijin/LSS/blob/master/configFiles/.vim/
-# Try the following if the above doesn't download just ".vim/" and it's contents
-#wget -r -nH --cut-dirs=2 --no-parent --reject="index.html*"
+if [ -L ~/.bash_alliases ]; then
+  echo .bash_alliases already exists...
+else
+  ln -s ~/bin/LSS/configFiles/.bash_alliases ~/.bashrc_alliases
+fi
+
+if [ -L ~/.vimrc ]; then
+  echo .bashrc already exists...
+else
+  ln -s ~/bin/LSS/configFiles/.vimrc ~/.vimrc
+fi
+
+if [ -L ~/.Xresources ]; then
+  echo .bashrc already exists...
+else
+  ln -s ~/bin/LSS/configFiles/.Xresources ~/.Xresources
+fi
+
+if [ -d "~/.vim" ]; then
+  echo .bashrc already exists...
+else
+  ln -s ~/bin/LSS/configFiles/.vim ~/.vim
+fi
