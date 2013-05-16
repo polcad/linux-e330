@@ -201,4 +201,4 @@ fi
 xrdb -merge .Xresources 
 
 # Set path
-export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:$HOME/bin
+export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:$HOME/bin:$HOME/bin/LSS
