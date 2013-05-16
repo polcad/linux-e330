@@ -33,10 +33,10 @@ else
   ln -s ~/bin/LSS/configFiles/.bashrc ~/.bashrc
 fi
 
-if [ -L ~/.bash_alliases ]; then
-  echo .bash_alliases already exists...
+if [ -L ~/.bash_aliases ]; then
+  echo .bash_aliases already exists...
 else
-  ln -s ~/bin/LSS/configFiles/.bash_alliases ~/.bashrc_alliases
+  ln -s ~/bin/LSS/configFiles/.bash_aliases ~/.bash_aliases
 fi
 
 if [ -L ~/.vimrc ]; then

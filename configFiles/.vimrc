@@ -1,5 +1,5 @@
 ".vimrc
-call pathogen#infect()
+"call pathogen#infect()
 filetype plugin indent on
 set backspace=2
 set nocompatible
