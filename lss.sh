@@ -13,4 +13,5 @@
 wget https://github.com/iseijin/LSS/blob/master/configFiles/.bashrc
 wget https://github.com/iseijin/LSS/blob/master/configFiles/.bash_alliases
 wget https://github.com/iseijin/LSS/blob/master/configFiles/.vimrc
-wget https://github.com/iseijin/LSS/blob/master/configFiles/.vim
+wget https://github.com/iseijin/LSS/blob/master/configFiles/.Xresources
+wget -r --no-parent --reject "index.html*" http://mysite.com/configs/.vim/
