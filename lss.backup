@@ -79,5 +79,6 @@ done
 
 if $self_delete ; then
   echo "Deleting $0"
-  rm $0
+  # Don't remove this line on backup copy
+  #####rm $0#######
 fi
