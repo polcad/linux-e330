@@ -15,23 +15,21 @@
 if eval "ping -c 1 www.google.com > /dev/null"; then
   :
 else
-  echo "No Internet Connection. Aborting."
+  echo "I require an internet connection but cannot find one. Aborting."
   exit 1
 fi
 
 # Test if git is installed
 command -v git >/dev/null 2>&1 || { echo >&2 "I require git but it's not installed.  Aborting."; exit 1;  }
 
-# git verify command here
-
+# Verify repo exists
+cd ~/bin/LSS && git show-ref > /dev/null
 if [ $? -eq 0 ]; then
   echo "The LSS git already exists, continuing..."
 else  
   self_delete=true # Delete this file as the real copy will be retrieved with git
   printf "This script cannot be run without the Git repo, the following command will be run first:\ngit clone git@github.com:iseijin/LSS.git ~/bin/LSS"
   git clone git@github.com:iseijin/LSS.git ~/bin/LSS
-  
-
 fi
 
 # Create sym links to files in LSS/configFiles
