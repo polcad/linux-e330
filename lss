@@ -77,6 +77,10 @@ do
   fi
 done
 
+if [ -e ~/.bashrc ]; then
+  source ~/.bashrc
+fi
+
 if $self_delete ; then
   echo "Deleting $0"
   rm $0
