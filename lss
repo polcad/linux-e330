@@ -24,7 +24,8 @@ command -v git >/dev/null 2>&1 || { echo >&2 "I require git but it's not install
 
 # Verify repo exists
 cd ~/bin/LSS && git show-ref > /dev/null
-if [ $? -eq 0 ]; then
+verify=$?
+if [ $verify -eq 0 ]; then
   echo "The LSS git already exists, continuing..."
 else  
   self_delete=true # Delete this file as the real copy will be retrieved with git
@@ -58,6 +59,9 @@ if [ ! -L ~/.vim ]; then
   ln -s ~/bin/LSS/configFiles/.vim ~/.vim
 fi
 
-if $self_delete; then
+if $self_delete ; then
+  echo "Deleting $0"
   rm $0
+else
+  exit
 fi
