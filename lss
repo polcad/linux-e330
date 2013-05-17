@@ -35,30 +35,58 @@ else
 fi
 
 # Create sym links to files in LSS/configFiles
-if [ ! -L ~/.bashrc ]; then
-  echo "Creating link for ~/.bashrc"
-  ln -s ~/bin/LSS/configFiles/.bashrc ~/.bashrc
-fi
+FILES=".bashrc
+.bash_aliases
+.vimrc
+.Xresources
+"
+for f in $FILES
+do
+  testname=$f
+  backup=$testname.backup
+  if [ ! -L ~/$testname ] && [ -e ~/$testname ]; then # Backup if it is a FILE and NOT a link
+    if [ -e ~/$backup ]; then
+      i=2
+      while [ -e ~/$backup$i ]; do
+        let i++
+      done
+      name=$backup$i
+    fi
+    echo "Backing up ~/.bashrc to ~/$backup"
+    mv ~/$testname $fpath/$backup
+    echo "Creating link for ~/.bashrc"
+    ln -s ~/bin/LSS/configFiles/$testname ~/$testname
+  elif [ -L ~/$testname ] # If file is a LINK
+    echo "Creating link for ~/.bashrc"
+    ln -sf ~/bin/LSS/configFiles/$testname ~/$testname
+  fi
+done
 
-if [ ! -L ~/.bash_aliases ]; then
-  echo "Creating link for ~/.bash_aliases"
-  ln -s ~/bin/LSS/configFiles/.bash_aliases ~/.bash_aliases
-fi
-
-if [ ! -L ~/.vimrc ]; then
-  echo "Creating link for ~/.vimrc"
-  ln -s ~/bin/LSS/configFiles/.vimrc ~/.vimrc
-fi
-
-if [ ! -L ~/.Xresources ]; then
-  echo "Creating link for ~/.Xresources"
-  ln -s ~/bin/LSS/configFiles/.Xresources ~/.Xresources
-fi
-
-if [ ! -L ~/.vim ]; then
-  echo "Creating link for ~/.vim"
-  ln -s ~/bin/LSS/configFiles/.vim ~/.vim
-fi
+######
+# if [ ! -L ~/.bash_aliases ]; then
+#   echo "Creating link for ~/.bash_aliases"
+#   ln -s ~/bin/LSS/configFiles/.bash_aliases ~/.bash_aliases
+# fi
+# 
+# if [ ! -L ~/.vimrc ]; then
+#   echo "Creating link for ~/.vimrc"
+#   ln -s ~/bin/LSS/configFiles/.vimrc ~/.vimrc
+# fi
+# 
+# if [ ! -L ~/.Xresources ]; then
+#   echo "Creating link for ~/.Xresources"
+#   ln -s ~/bin/LSS/configFiles/.Xresources ~/.Xresources
+# fi
+# 
+# if [ -d ~/.vim ]; then
+#   if [ -L ~/.vim ]; then
+#     echo "Creating link for ~/.vim"
+#     ln -s ~/bin/LSS/configFiles/.vim ~/.vim
+#   else
+#     echo "Backing up .vim to .vimbackup"
+#     mv ~/.vim ~/.vim
+#   fi
+# fi
 
 if $self_delete ; then
   echo "Deleting $0"

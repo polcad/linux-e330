@@ -10,8 +10,8 @@ set showtabline=2
 set cindent
 set smartindent
 set autoindent
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 set cinkeys=0{,0},:,0#,!^F
 
