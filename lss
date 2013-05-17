@@ -27,6 +27,7 @@ cd ~/bin/LSS && git show-ref > /dev/null
 verify=$?
 if [ $verify -eq 0 ]; then
   echo "The LSS git already exists, continuing..."
+  self_delete=false
 else  
   self_delete=true # Delete this file as the real copy will be retrieved with git
   printf "This script cannot be run without the Git repo, the following command will be run first:\ngit clone git@github.com:iseijin/LSS.git ~/bin/LSS"
@@ -62,6 +63,4 @@ fi
 if $self_delete ; then
   echo "Deleting $0"
   rm $0
-else
-  exit
 fi
