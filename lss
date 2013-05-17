@@ -3,55 +3,48 @@
 # Author: iseijin
 # Date: 13/05/2013
 # Description: Use git to retrieve various Linux Configuration files from a repository on github.
+#+++++++++++++++++++++
 # Files:
 #       .bashrc
 #       .bash_aliases
 #       .vimrc
 #       .Xresources
 # Dirs:
-#       $HOME/vim/
-#
-# Scripts will be stored in $HOME/bin - create the directory if it doesn't exist
-if [ -d "$HOME/bin" ]; then
-  echo $HOME/bin already exists.
-else
-  mkdir $HOME/bin
-fi
+#       ~/.vim/
+#+++++++++++++++++++++
+# This script runs from ~/bin - create the directory if it doesn't exist or modify the file to reflect where you want your scripts folder e.g. ~/scripts, /usr/bin
 
-# Use Git
-if [ -d "$HOME/bin/LSS" ]; then
-  echo The LSS git already exists, skipping this part.
+# Exit if the repo doesn't exist.
+# git verify command here
+if [ $? -eq 0 ]; then
+  echo "The LSS git already exists, skipping this part."
 else
-  git clone git@github.com:iseijin/LSS.git $HOME/bin/LSS
+  printf "Cannot be run in this fashion run the following command first:\ngit clone git@github.com:iseijin/LSS.git ~/bin/LSS"
+  exit 32
 fi
 
 # Create sym links to files in LSS/configFiles
-if [ -L ~/.bashrc ]; then
-  echo .bashrc already exists...
-else
+if [ ! -L ~/.bashrc ]; then
+  echo "Creating link for ~/.bashrc"
   ln -s ~/bin/LSS/configFiles/.bashrc ~/.bashrc
 fi
 
-if [ -L ~/.bash_aliases ]; then
-  echo .bash_aliases already exists...
-else
+if [ ! -L ~/.bash_aliases ]; then
+  echo "Creating link for ~/.bash_aliases"
   ln -s ~/bin/LSS/configFiles/.bash_aliases ~/.bash_aliases
 fi
 
-if [ -L ~/.vimrc ]; then
-  echo .vimrc already exists...
-else
+if [ ! -L ~/.vimrc ]; then
+  echo "Creating link for ~/.vimrc"
   ln -s ~/bin/LSS/configFiles/.vimrc ~/.vimrc
 fi
 
-if [ -L ~/.Xresources ]; then
-  echo .Xresources already exists...
-else
+if [ ! -L ~/.Xresources ]; then
+  echo "Creating link for ~/.Xresources"
   ln -s ~/bin/LSS/configFiles/.Xresources ~/.Xresources
 fi
 
-#if [ -d "~/.vim" ]; then
-#  echo .vim already exists...
-#else
-#  ln -s ~/bin/LSS/configFiles/.vim ~/.vim
-#fi
+if [ ! -L ~/.vim ]; then
+  echo "Creating link for ~/.vim"
+  ln -s ~/bin/LSS/configFiles/.vim ~/.vim
+fi
