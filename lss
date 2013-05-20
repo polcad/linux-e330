@@ -52,27 +52,26 @@ do
   testname=$f
   backup=$testname.backup
   fullpath=$fpath/$testname
-  testpath=$fpath/$testname
-  if [ ! -L $fullpath ] && [ -e $testpath ]; then # Backup if it is a FILE and NOT a link
+  if [ ! -L $fullpath ] && [ -e $fullpath ]; then # Backup if it is a FILE and NOT a link
     if [ -e $fpath/$backup ]; then
-      i=2
+      i=0
       while [ -e $fpath/$backup$i ]; do
         let i++
       done
-      name=$backup$i
+      backupName=$backup$i
     fi
-    echo "Backing up $testpath to $fpath/$backup"
-    mv $testpath $fpath/$backup
-    echo "Creating link for $testpath"
-    ln -s $fpath/bin/LSS/configFiles/$testname $testpath
-  elif [ -L $testpath ]; then
+    echo "Backing up $fullpath to $fpath/$backup"
+    mv $testpath $fpath/$backupName
+    echo "Creating link for $fullpath"
+    ln -s $fpath/bin/LSS/configFiles/$testname $fullpath
+  elif [ -L $fullpath ]; then
     # If file is a LINK
-    target=`readlink $testpath`
+    target=`readlink $fullpath`
     if [ $target != $fpath/bin/LSS/configFiles/$testname ]; then
-      echo "Creating link for $testpath"
-      ln -sf $fpath/bin/LSS/configFiles/$testname $fpath/$testname
+      echo "Creating link for $fullpath"
+      ln -sf $fpath/bin/LSS/configFiles/$testname $fullpath
     else
-      echo "Link for $testpath has already been created."
+      echo "Link for $fullpath has already been created."
     fi
   fi
 done
