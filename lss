@@ -45,39 +45,37 @@ FILES=".bashrc
 .Xresources
 .vim
 "
+fpath=/home/$USER
 
 for f in $FILES
 do
   testname=$f
   backup=$testname.backup
-  fullpath=$HOME/$testname
-  if [ ! -L $fullpath ] && [ -e $fullpath ]; then # Backup if it is a FILE and NOT a link
-    if [ -e $HOME/$backup ]; then
+  fullpath=$fpath/$testname
+  testpath=$fpath/$testname
+  if [ ! -L $fullpath ] && [ -e $testpath ]; then # Backup if it is a FILE and NOT a link
+    if [ -e $fpath/$backup ]; then
       i=2
-      while [ -e $HOME/$backup$i ]; do
+      while [ -e $fpath/$backup$i ]; do
         let i++
       done
       name=$backup$i
     fi
-    echo "Backing up $testpath to $HOME/$backup"
-    mv $testpath $HOME/$backup
-    echo "Creating link for $fullpath"
-    ln -s $fpath/bin/LSS/configFiles/$testname $fullpath
-  elif [ -L $fullpath ]; then
+    echo "Backing up $testpath to $fpath/$backup"
+    mv $testpath $fpath/$backup
+    echo "Creating link for $testpath"
+    ln -s $fpath/bin/LSS/configFiles/$testname $testpath
+  elif [ -L $testpath ]; then
     # If file is a LINK
-    target=`readlink $fullpath`
+    target=`readlink $testpath`
     if [ $target != $fpath/bin/LSS/configFiles/$testname ]; then
-      echo "Creating link for $fullpath"
-      ln -sf $fpath/bin/LSS/configFiles/$testname $fullpath
+      echo "Creating link for $testpath"
+      ln -sf $fpath/bin/LSS/configFiles/$testname $fpath/$testname
     else
-      echo "Link for $fullpath has already been created."
+      echo "Link for $testpath has already been created."
     fi
   fi
 done
-
-if [ -e ~/.bashrc ]; then
-  source ~/.bashrc
-fi
 
 if $self_delete ; then
   echo "Deleting $0"
