@@ -199,7 +199,9 @@ fi
 
 # Mergre settings for XTerm
 if [ -n ${DISPLAY} ]; then
-  xrdb -merge ~/.Xresources
+  if [ "$TERM" == "xterm" ]; then
+    xrdb -merge ~/.Xresources
+  fi
 fi  
 
 # Set path
