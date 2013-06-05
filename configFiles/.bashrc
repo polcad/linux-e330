@@ -199,7 +199,7 @@ fi
 
 # Mergre settings for XTerm
 if [ -n ${DISPLAY} ]; then
-  xrdb -merge ~/.Xresources
+  xrdb -merge .Xresources
 fi  
 
 # Set path

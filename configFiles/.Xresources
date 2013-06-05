@@ -1,15 +1,17 @@
-!.Xresources
-! Make sure to add the following line to a startup script
-!   xrdb -merge ~/.Xresources
-
+#.Xresources
+#
+# Make sure to add the following line to a startup script
+#   xrdb -merge ~/.Xresources
+#
+#
 XTerm*background: black
 XTerm*foreground: white
 XTerm*pointerColor: white
 XTerm*pointerColorBackground: navy
 XTerm*cursorColor: white
-XTerm*internalBorder: 3
-XTerm*loginShell: true
-XTerm*scrollBar: false
-XTerm*scrollKey: true
+#XTerm*internalBorder: 3
+#XTerm*loginShell: true
+#XTerm*scrollBar: false
+#XTerm*scrollKey: true
 XTerm*saveLines: 2000
-XTerm*multiClickTime: 250
+#XTerm*multiClickTime: 250
