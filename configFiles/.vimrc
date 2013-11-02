@@ -33,7 +33,10 @@ map <F10> :cprevious<Return>
 map <F11> :cnext<Return>
 "VIM Theme
 "Note background set to dark in .vimrc
+" ctermfg/ctermbg for console
+" guifg/guibg for gui
 highlight Normal     guifg=gray guibg=black
+highlight Comment    ctermfg=red
 " Remove toolbar
 set guioptions-=T
 "Vim Key Mappings
