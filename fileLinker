@@ -19,16 +19,21 @@ FILES=".bashrc
 .Xresources
 .vim
 "
-fpath=/home/$USER
+# add following files
+#.git-prompt.sh
+#.bash_colors
+#.bash_functions
+fpath=$HOME
 
 for f in $FILES
 do
   testname=$f
   backup=$testname.backup
   fullpath=$fpath/$testname
-  if [ ! -L $fullpath ] && [ -e $fullpath ]; then # Backup if it is a FILE and NOT a linki
+  if [ ! -L $fullpath ] && [ -e $fullpath ]; then # Backup if it is a FILE and NOT a link
     if [ -e $fpath/$backup ]; then
       i=1
+      # Loop version number for backups
       while [ -e $fpath/$backup$i ]; do
         let i++
       done
