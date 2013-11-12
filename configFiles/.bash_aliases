@@ -14,9 +14,16 @@ alias ....='cd ../../..'
 alias cp='cp -i'            # Safe copy with prompt
 alias rm='rm -i'            # Safe remove with prompt
 # ls aliases
-alias ll='ls -l'
-alias l='ls -CF'
-alias la='ls -a --color=auto'
+alias ls='ls --color=always'
+alias ll='ls -l --color=always'
+alias l='ls -CF --color=always'
+alias la='ls -a --color=always'
+alias less='less -R'  # Fixes color in pipes to less
+alias dir='dir --color=auto'
+alias vdir='vdir --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 # Networking
 alias pingc='ping -c 10'
 alias pingg='ping -c 10 www.google.com'

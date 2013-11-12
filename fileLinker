@@ -18,11 +18,11 @@ FILES=".bashrc
 .vimrc
 .Xresources
 .vim
+git-prompt.sh
+.bash_colors
+.bash_functions
+git-completion.bash
 "
-# add following files
-#.git-prompt.sh
-#.bash_colors
-#.bash_functions
 fpath=$HOME
 
 for f in $FILES

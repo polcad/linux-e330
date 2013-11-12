@@ -22,8 +22,8 @@ elif [  "$fileDEBUG" != "0" ]; then
 	echo "git-prompt.sh is missing for $USER"
 fi
 # Enables bash completion of git commands
-if [ -f /usr/share/git/completion/git-completion.bash ]; then
-    . /usr/share/git/completion/git-completion.bash
+if [ -f ~/git-completion.bash ]; then
+    . ~/git-completion.bash
 elif [  "$fileDEBUG" != "0" ]; then
 	echo "git-completion.bash is missing for $USER (git might not be installed)"
 fi  
@@ -39,6 +39,14 @@ if [ -f ~/.bash_colors ]; then
 elif [  "$fileDEBUG" != "0" ]; then
 	echo ".bash_colors is missing for $USER"	
 fi
+# Enable programmable completion features
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+    . /etc/bash_completion
+fi
+# Merge settings for XTerm
+if [ -n ${DISPLAY} ]; then
+  xrdb -merge ~/.Xresources
+fi  
 
 # <joke>If this list of source files gets any bigger I'll have to add all the
 # "source" lines to another file.</joke>
@@ -77,27 +85,6 @@ fi
 if [ $UID != 0 ]; then
     export PS1="$Green\u@\h$Cyan \w $Red\$(__git_ps1 '(%s)')$Cyan \$$Color_Off "
 fi
-
-# Enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    alias dir='dir --color=auto'
-    alias vdir='vdir --color=auto'
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
-# Enable programmable completion features
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
-fi
-
-# Merge settings for XTerm
-if [ -n ${DISPLAY} ]; then
-  xrdb -merge ~/.Xresources
-fi  
 
 # Set path
 export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
