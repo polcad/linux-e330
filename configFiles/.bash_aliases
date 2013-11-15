@@ -30,8 +30,9 @@ alias pingg='ping -c 10 www.google.com'
 #
 # SSH AGENT SHELL
 # Starts a bash session with an unlocked private key
-alias sshbk="ssh-agent sh -c 'ssh-add < /dev/null && bash'"
+#alias sshbk="ssh-agent bash -c 'ssh-add' < /dev/null"
 # Alias to HTPC
-alias server='ssh -p 1121 joshua@10.0.0.25'
+alias server='ssh -p 1121 joshua@10.0.0.71'
 #
 alias vim='vim -T xterm-256color'
+alias srchome='source ~/.bashrc'
