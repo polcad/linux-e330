@@ -24,6 +24,10 @@ git-prompt.sh
 git-completion.bash
 "
 fpath=$HOME
+rpath="bin/linux-e330"
+
+# Test if git is installed
+command -v git >/dev/null 2>&1 || { echo >&2 "I require git but it's not installed. Aborting."; exit 1; }
 
 for f in $FILES
 do
@@ -42,18 +46,18 @@ do
     echo "Backing up $fullpath to $fpath/$backup"
     mv $fpath/$testname $fpath/$backup
    echo "Creating link for $fullpath"
-    ln -s -f $fpath/bin/LSS/configFiles/$testname $fullpath
+    ln -s -f $fpath/$rpath/configFiles/$testname $fullpath
   elif [ -L $fullpath ]; then # If file is a LINK
     target=`readlink $fullpath`
-    if [ $target != $fpath/bin/LSS/configFiles/$testname ]; then
+    if [ $target != $fpath/$rpath/configFiles/$testname ]; then
       echo "Creating link for $fullpath"
-      ln -s -f $fpath/bin/LSS/configFiles/$testname $fullpath
+      ln -s -f $fpath/$rpath/configFiles/$testname $fullpath
     else
       echo "Link for $fullpath has already been created."
     fi  
   elif [ ! -e $fpath/$testname ]; then # If no file or link exists this should run
     echo "No $fullpath/$testname File or Link: Creating link."
-    ln -s -f $fpath/bin/LSS/configFiles/$testname $fullpath
+    ln -s -f $fpath/$rpath/configFiles/$testname $fullpath
   fi
 done
 
