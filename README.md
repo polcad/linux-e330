@@ -1,8 +1,8 @@
 # linux-e330
 Setup and configuration scripts for all e330 series.
 Automatically retrieve my personalised configurations (e.g. bashrc, vimrc, etc) for new Linux installations.
-Includes liquidprompt.--hit
-To install (from your home directory):
+Includes liquidprompt. 
+To install (from your home directory): 
 
 ```sh
 mkdir bin
