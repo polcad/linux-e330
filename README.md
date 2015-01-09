@@ -2,7 +2,6 @@
 Setup and configuration scripts for all e330 series
 
 LSS
-===
 
 Based on LSS by iseijin
 
