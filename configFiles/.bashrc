@@ -90,3 +90,7 @@ fi
 export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
 # $HOME paths
 export PATH=$PATH:$HOME/bin:$HOME/bin/LSS
+
+# Only load Liquid Prompt in interactive shells, not from a script or from scp
+[[ $- = *i* ]] && source ~/bin/liquidprompt/liquidprompt
+

@@ -15,7 +15,7 @@ alias cp='cp -i'            # Safe copy with prompt
 alias rm='rm -i'            # Safe remove with prompt
 # ls aliases
 alias ls='ls --color=always'
-alias ll='ls -l --color=always'
+alias ll='ls -al --color=always'
 alias l='ls -CF --color=always'
 alias la='ls -a --color=always'
 alias less='less -R'  # Fixes color in pipes to less
