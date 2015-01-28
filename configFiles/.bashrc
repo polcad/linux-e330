@@ -91,6 +91,9 @@ export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
 # $HOME paths
 export PATH=$PATH:$HOME/bin:$HOME/bin/LSS
 
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
+
 # Only load Liquid Prompt in interactive shells, not from a script or from scp
 [[ $- = *i* ]] && source ~/bin/liquidprompt/liquidprompt
 
