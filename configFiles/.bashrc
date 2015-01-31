@@ -90,6 +90,8 @@ fi
 export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
 # $HOME paths
 export PATH=$PATH:$HOME/bin:$HOME/bin/LSS
+export PYTHONPATH=/usr/local/lib/python2.7/dist-packages
+export LD_LIBRARY_PATH=/usr/local/lib
 
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
