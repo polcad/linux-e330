@@ -9,7 +9,7 @@ cd bin
 git clone https://github.com/nojhan/liquidprompt.git
 git clone https://github.com/polcad/linux-e330.git
 cd linux-e330
-./fileLinker
+./configFilesLinker
 ```
 Based on LSS by iseijin - Linux Setup Script
 

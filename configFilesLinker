@@ -1,0 +1,62 @@
+#!/bin/bash
+# Linux Setup Script (LSS)
+# Author: polcad
+# Date: 5/01/2015
+# Description: Use git to retrieve various Linux Configuration files from a repository on github.
+#+++++++++++++++++++++
+#       ~/.bashrc
+#       ~/.bash_aliases
+#       ~/.vimrc
+#       ~/.Xresources
+#       ~/.vim/
+#+++++++++++++++++++++
+# This script runs from ~/bin/linux-e330 - create the directory if it doesn't exist or modify the file to reflect where you want your scripts folder e.g. ~/scripts, /usr/bin
+
+# Create sym links to files in bin/linux-e330/configFiles
+FILES=".bashrc
+.bash_aliases
+.vimrc
+.Xresources
+.vim
+git-prompt.sh
+.bash_colors
+.bash_functions
+git-completion.bash
+"
+fpath=$HOME
+rpath="bin/linux-e330"
+
+# You should not need to modify anything below this line
+for f in $FILES
+do
+  testname=$f
+  backup=$testname.backup
+  fullpath=$fpath/$testname
+  if [ ! -L $fullpath ] && [ -e $fullpath ]; then # Backup if it is a FILE and NOT a link
+    if [ -e $fpath/$backup ]; then
+      i=1
+      # Loop version number for backups
+      while [ -e $fpath/$backup$i ]; do
+        let i++
+      done
+      backup=$backup$i
+    fi
+    echo "Backing up $fullpath to $fpath/$backup"
+    mv $fpath/$testname $fpath/$backup
+   echo "Creating link for $fullpath"
+    ln -s -f $fpath/$rpath/configFiles/$testname $fullpath
+  elif [ -L $fullpath ]; then # If file is a LINK
+    target=`readlink $fullpath`
+    if [ $target != $fpath/$rpath/configFiles/$testname ]; then
+      echo "Creating link for $fullpath"
+      ln -s -f $fpath/$rpath/configFiles/$testname $fullpath
+    else
+      echo "Link for $fullpath has already been created."
+    fi  
+  elif [ ! -e $fpath/$testname ]; then # If no file or link exists this should run
+    echo "No $fullpath/$testname File or Link: Creating link."
+    ln -s -f $fpath/$rpath/configFiles/$testname $fullpath
+  fi
+done
+
+source ~/.bashrc
