@@ -1,0 +1,16 @@
+# -*- mode: sh -*-
+
+# This file will be pointed to by an ~/.mrconfig symlink
+# created in the fixups section below.
+
+[DEFAULT]
+# Teach mr how to `mr gc` in git repos.
+git_gc = git gc "$@"
+
+[bin/linux-e330]
+checkout = git clone 'https://github.com/polcad/linux-e330.git' 'linux-e330'
+
+[bin/liquidprompt]
+checkout = git clone 'https://github.com/nojhan/liquidprompt.git' 'liquidprompt'
+
+
