@@ -6,6 +6,9 @@
 [DEFAULT]
 # Teach mr how to `mr gc` in git repos.
 git_gc = git gc "$@"
+## Teach mr how to config user name and email with `mr configusername` and `mr configuseremail`
+git_configusername = git config user.name "Ohh Boy"
+git_configuseremail = git config user.email ohhboy@localhost1.ohh
 
 [bin/linux-e330]
 checkout = git clone 'https://github.com/polcad/linux-e330.git' 'linux-e330'
