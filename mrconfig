@@ -13,7 +13,34 @@ git_configuseremail = git config user.email ohhboy@localhost1.ohh
 [bin/linux-e330]
 checkout = git clone 'https://github.com/polcad/linux-e330.git' 'linux-e330'
 
+[bin/sqlitebrowser]
+checkout = git clone 'https://github.com/sqlitebrowser/sqlitebrowser.git' 'sqlitebrowser'
+
+[bin/e330-ap1]
+checkout = git clone 'https://github.com/polcad/e330-ap1.git' 'e330-ap1'
+
+[bin/e330-service]
+checkout = git clone 'https://github.com/polcad/e330-service.git' 'e330-service'
+
+[bin/e330-update]
+checkout = git clone 'https://github.com/polcad/e330-update.git' 'e330-update'
+
+[bin/gsmws]
+checkout = git clone 'https://github.com/shaddi/gsmws.git' 'gsmws'
+
 [bin/liquidprompt]
 checkout = git clone 'https://github.com/nojhan/liquidprompt.git' 'liquidprompt'
+
+[bin/mcc-mnc-table]
+checkout = git clone 'https://github.com/musalbas/mcc-mnc-table.git' 'mcc-mnc-table'
+
+[bin/myrepos]
+checkout = git clone 'https://github.com/joeyh/myrepos.git' 'myrepos'
+
+[bin/openbts-src/openbts-uhd-chemeris]
+checkout = git clone 'git://github.com/chemeris/openbts-uhd.git' 'openbts-uhd-chemeris'
+
+[bin/weblinks]
+checkout = git clone 'https://github.com/polcad/weblinks.git' 'weblinks'
 
 
