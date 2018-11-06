@@ -13,3 +13,5 @@ cd linux-e330
 ```
 Based on LSS by iseijin - Linux Setup Script
 
+future work:
+- add http://blog.kfish.org/2010/04/git-lola.html
